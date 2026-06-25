@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知识点查询 · 爱游戏体育</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: linear-gradient(145deg, #fbe9e0 0%, #fce9d8 45%, #f7dcc5 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem 4rem;
+      color: #3e2c1f;
+    }
+
+    .main-wrapper {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #fffcf9;
+      border-radius: 28px;
+      box-shadow: 0 12px 28px rgba(142, 88, 52, 0.10), 0 4px 10px rgba(0,0,0,0.02);
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.15s;
+    }
+
+    .card-soft {
+      background: rgba(255, 248, 243, 0.75);
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(226, 184, 149, 0.25);
+    }
+
+    /* 页眉 / 标题区 */
+    .hero {
+      text-align: center;
+      padding: 2.8rem 1.5rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 450;
+      letter-spacing: 1px;
+      color: #4b2e1d;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #7a5b44;
+      opacity: 0.85;
+      border-top: 1px solid #e7cdb7;
+      display: inline-block;
+      padding-top: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    /* 目录感网格 */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 680px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .card {
+        padding: 1.6rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #b28a6f;
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 480;
+      color: #4f321f;
+      margin-bottom: 1rem;
+      border-left: 4px solid #dbb594;
+      padding-left: 0.8rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 450;
+      margin: 1.2rem 0 0.4rem;
+      color: #5b3e2a;
+    }
+
+    p {
+      line-height: 1.65;
+      margin-bottom: 0.9rem;
+      color: #4a3629;
+    }
+
+    .text-sm {
+      font-size: 0.92rem;
+      opacity: 0.85;
+    }
+
+    /* 圆角按钮感链接 */
+    .link-button {
+      display: inline-block;
+      background: #fff1e3;
+      color: #603e26;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 470;
+      border: 1px solid #e1c0a4;
+      transition: background 0.2s, border-color 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .link-button:hover {
+      background: #edd5bf;
+      border-color: #c9a585;
+    }
+
+    /* FAQ 摘要卡片 */
+    .faq-item {
+      border-bottom: 1px solid #efe2d6;
+      padding: 0.9rem 0;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 490;
+      color: #4f321f;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .faq-q::before {
+      content: "▹";
+      margin-right: 0.5rem;
+      color: #b48d71;
+      font-size: 1rem;
+    }
+
+    .faq-a {
+      padding-left: 1.6rem;
+      font-size: 0.93rem;
+      color: #5e4535;
+    }
+
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem 0.6rem;
+      margin: 0.6rem 0;
+    }
+
+    .tag {
+      background: #f5e5d9;
+      border-radius: 30px;
+      padding: 0.1rem 0.9rem;
+      font-size: 0.8rem;
+      color: #603e26;
+      white-space: nowrap;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #7a5f4d;
+      opacity: 0.7;
+    }
+
+    /* 对照表风格 */
+    .compare-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .compare-row {
+      display: flex;
+      gap: 0.8rem;
+      border-bottom: 1px dashed #e8d3c2;
+      padding: 0.45rem 0;
+    }
+
+    .compare-row span:first-child {
+      flex: 1;
+      font-weight: 400;
+    }
+
+    .compare-row span:last-child {
+      flex: 2;
+      color: #4b3629;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2cdbb;
+      margin: 1.2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-wrapper">
+
+    <!-- hero 区：知识库入口感 -->
+    <div class="card hero">
+      <h1>查询 · 对照 · 延伸</h1>
+      <div class="sub">围绕 <a href="https://pro-aigamesports.com" style="color:#603e26; text-decoration:underline; text-underline-offset:3px; font-weight:470;">爱游戏体育</a> 的知识卡片与常见参照</div>
+      <p style="max-width: 600px; margin: 1.2rem auto 0; font-size: 0.95rem; opacity:0.8;">
+        日常查询、术语对照、场景笔记整理于此。内容保持克制，供延伸阅读时取用。
+      </p>
+    </div>
+
+    <!-- 两栏网格 -->
+    <div class="grid-2col">
+
+      <!-- 左栏：说明区 + 场景速查 -->
+      <div>
+        <!-- 说明区卡片 -->
+        <div class="card">
+          <div class="section-label">📖 说明区</div>
+          <h2>爱游戏体育 · 平台背景</h2>
+          <p>
+            <a href="https://pro-aigamesports.com" class="link-button" style="margin-right:0.5rem;">爱游戏体育</a> 
+            是一个围绕体育赛事与游戏化交互整合的信息型平台。其主要面向希望快速查阅比赛数据、了解体育游戏机制以及关注体育科技演进的用户。
+          </p>
+          <p>
+            平台不强调即时博彩或投机内容，而是将重点放在赛事记录、游戏规则对照以及竞技文化观察上。适合作为日常体育知识补充的来源。
+          </p>
+          <div class="info-row">
+            <span class="tag">赛事记录</span>
+            <span class="tag">规则对照</span>
+            <span class="tag">竞技观察</span>
+          </div>
+        </div>
+
+        <!-- 场景区卡片 -->
+        <div class="card">
+          <div class="section-label">⚙️ 常见查询场景</div>
+          <div class="compare-grid">
+            <div class="compare-row"><span>场景</span><span>为何查</span></div>
+            <div class="compare-row"><span>比赛日程</span><span>快速定位下一场焦点战</span></div>
+            <div class="compare-row"><span>队伍/选手</span><span>了解历史交手与近期状态</span></div>
+            <div class="compare-row"><span>规则细节</span><span>确认争议判罚或特殊赛制</span></div>
+            <div class="compare-row"><span>游戏版本</span><span>体育类模拟游戏更新摘要</span></div>
+            <div class="compare-row"><span>术语解释</span><span>阅读报告时遇到的缩写或黑话</span></div>
+          </div>
+          <p class="text-sm" style="margin-top:1rem;">
+            上述场景在 <a href="https://pro-aigamesports.com" style="color:#5e3f2b; text-decoration:underline;">爱游戏体育</a> 中均有对应内容版块，适合直接用作查证起点。
+          </p>
+        </div>
+      </div>
+
+      <!-- 右栏：对照区 + 提示区 -->
+      <div>
+        <!-- 对照区卡片 -->
+        <div class="card">
+          <div class="section-label">📊 对照区</div>
+          <h2>常用概念对照</h2>
+          <div class="compare-grid">
+            <div class="compare-row"><span>赛会制 vs 联赛制</span><span>前者单败淘汰，后者积分循环</span></div>
+            <div class="compare-row"><span>BO1 / BO3 / BO5</span><span>局数差异影响策略深度</span></div>
+            <div class="compare-row"><span>实时数据 vs 赛后统计</span><span>实时侧重动态，赛后侧重总结</span></div>
+            <div class="compare-row"><span>模拟赛 vs 真实赛</span><span>模拟基于算法，真实基于现场</span></div>
+          </div>
+          <hr>
+          <p class="text-sm">
+            以上对照仅为简要框架，更完整的分类与延伸解释可参考<a href="https://pro-aigamesports.com" style="color:#5e3f2b; text-decoration:underline;">爱游戏体育</a>相关页面中的「术语对照」板块。
+          </p>
+        </div>
+
+        <!-- 提示区卡片 -->
+        <div class="card">
+          <div class="section-label">💡 提示区</div>
+          <h2>阅读辅助提醒</h2>
+          <ul style="list-style: none; padding-left:0;">
+            <li style="margin-bottom: 0.7rem; display: flex; gap:0.5rem;">
+              <span style="color:#b48d71;">⏺</span>
+              <span>数据源通常标注日期与版本，跨平台对比时留意时效。</span>
+            </li>
+            <li style="margin-bottom: 0.7rem; display: flex; gap:0.5rem;">
+              <span style="color:#b48d71;">⏺</span>
+              <span>赛事规则可能因主办方调整，建议以最新公告为准。</span>
+            </li>
+            <li style="margin-bottom: 0.7rem; display: flex; gap:0.5rem;">
+              <span style="color:#b48d71;">⏺</span>
+              <span>若发现条目之间存在矛盾，可参考<a href="https://pro-aigamesports.com" style="color:#5e3f2b;">爱游戏体育</a>的「争议与勘误」归档。</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 相关信息区：FAQ 摘要 -->
+    <div class="card card-soft">
+      <div class="section-label">❔ 相关信息 · 常见疑问摘要</div>
+      <div class="faq-item">
+        <div class="faq-q">爱游戏体育上的数据更新频率如何？</div>
+        <div class="faq-a">主要赛事数据通常在赛后 30 分钟内录入，常规统计每日同步一次。具体可留意页面标注的更新时间戳。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">我能否自由引用这里的对照表？</div>
+        <div class="faq-a">对照表为通用知识整理，不涉及独家数据。若公开引用建议注明出处为<a href="https://pro-aigamesports.com" style="color:#5e3f2b;">爱游戏体育</a>，以便读者进一步查阅。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">为什么需要区分“模拟赛”与“真实赛”？</div>
+        <div class="faq-a">二者底层逻辑不同：模拟赛基于算法与历史模型，真实赛依赖现场判罚与实时变量。对照区分有助于避免混淆分析结果。</div>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+      页面内容为知识整理，不作投资或决策建议 · 信息各有来源，请自行核实
+    </div>
+  </div>
+</body>
+</html>
