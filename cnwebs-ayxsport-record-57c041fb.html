@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏体育 · 故事</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fbf3e0 0%, #f7e6ce 40%, #f0dab8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+        }
+
+        .story-card {
+            background: #fffcf7;
+            max-width: 820px;
+            width: 100%;
+            border-radius: 52px 24px 52px 24px;
+            box-shadow: 0 20px 40px -12px rgba(160, 100, 40, 0.25),
+                        0 6px 18px rgba(200, 140, 60, 0.08);
+            padding: 3rem 2.8rem;
+            transition: box-shadow 0.25s;
+            border: 1px solid #f7ede0;
+        }
+
+        @media (max-width: 600px) {
+            .story-card {
+                padding: 2.2rem 1.5rem;
+                border-radius: 36px 16px 36px 16px;
+            }
+        }
+
+        .opening-line {
+            font-size: 1.5rem;
+            font-weight: 350;
+            letter-spacing: 1px;
+            color: #6d4c2e;
+            margin-bottom: 0.8rem;
+            border-left: 5px solid #c8965a;
+            padding-left: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .opening-line em {
+            font-style: italic;
+            color: #b0763a;
+        }
+
+        .narrative {
+            color: #3f2f1e;
+            margin: 1.2rem 0 1.5rem 0;
+            font-size: 1.08rem;
+        }
+
+        .narrative p {
+            margin-bottom: 1.2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 1.8rem;
+            margin: 1.8rem 0 2rem 0;
+            background: #faf2e7;
+            padding: 1.6rem 1.8rem;
+            border-radius: 28px 10px 28px 10px;
+        }
+
+        @media (max-width: 550px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                padding: 1.2rem 1.2rem;
+            }
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+
+        .feature-icon {
+            background: #dbb68c;
+            color: #3f2b15;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .feature-text strong {
+            color: #7a562e;
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .feature-text span {
+            font-size: 0.92rem;
+            color: #4d3821;
+        }
+
+        .gentle-closing {
+            background: #efe2cf;
+            padding: 1.2rem 1.6rem;
+            border-radius: 50px 12px 50px 12px;
+            margin: 1.8rem 0 1rem 0;
+            font-size: 1rem;
+            color: #2c1f10;
+        }
+
+        .gentle-closing a {
+            color: #6d3f13;
+            background: #fff3e3;
+            padding: 0.1rem 0.7rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #cd9f6b;
+            transition: background 0.2s, border-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .gentle-closing a:hover {
+            background: #fae4ca;
+            border-bottom-color: #a7733b;
+        }
+
+        .closing-thought {
+            text-align: right;
+            font-size: 0.95rem;
+            color: #73583b;
+            padding-top: 0.3rem;
+            border-top: 1px dashed #dac09e;
+            margin-top: 0.5rem;
+        }
+
+        .note-light {
+            font-size: 0.9rem;
+            color: #7f6a52;
+            margin-top: 1.5rem;
+            line-height: 1.6;
+            background: #f6ede2;
+            padding: 0.5rem 1rem;
+            border-radius: 40px 6px 40px 6px;
+        }
+
+        .note-light a {
+            color: #7a562e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c69b6c;
+            text-decoration-thickness: 1px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e3d1ba;
+            margin: 1.2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="story-card">
+        <div class="opening-line">
+            <em>有些地方，</em>来过之后便想再次推开那扇门。
+        </div>
+
+        <div class="narrative">
+            <p>
+                大概是从某次寻常的傍晚开始，我顺手点开了那页熟悉的界面。没有刻意安排，只是习惯性想看看有没有新赛事、新的讨论。后来，那页标签就一直留在浏览器收藏夹里，和那些常读的站点放在一起——不是因为它多特别，而是因为你发现，每次回来，总能找到一点值得驻足的片刻。
+            </p>
+            <p>
+                现在回想，那个叫<a href="https://cnwebs-ayxsport.com.cn" style="color:#7a562e; font-weight:500; text-decoration:underline; text-underline-offset:3px; text-decoration-color:#c8965a;">爱游戏体育</a>的地方，其实一直保持着某种安静的步调。它不喧哗，也不刻意拉你留下，只是把信息、赛事、观点，一件件摆在那里。你愿意翻，总能看到些感兴趣的角落。
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">☕</div>
+                <div class="feature-text">
+                    <strong>收藏的理由</strong>
+                    <span>内容更新有规律，不必担心打开后只剩旧闻。页面简单直接，没有层层弹窗消耗耐心。</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔖</div>
+                <div class="feature-text">
+                    <strong>再度访问的引力</strong>
+                    <span>栏目分类清晰，能从熟悉的入口找到想看的板块。偶尔有专题整理，适合慢慢翻阅。</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📌</div>
+                <div class="feature-text">
+                    <strong>持续关注的价值</strong>
+                    <span>不是那种“必须每天刷”的站点，而是你隔几天回来，总能发现新沉淀的东西，不慌不忙。</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🕊️</div>
+                <div class="feature-text">
+                    <strong>氛围克制</strong>
+                    <span>没有夸张的标语和倒计时压迫感。界面配色舒服，读起来不累，适合安静的信息浏览。</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gentle-closing">
+            <p style="margin-bottom:0.3rem;">
+                如果你也在找一个可以放书签、偶尔回来看看的体育角落——
+                <a href="https://cnwebs-ayxsport.com.cn">爱游戏体育</a>或许值得一试。
+            </p>
+            <p style="margin:0.2rem 0 0 0; font-size:0.93rem; opacity:0.85;">
+                不需要记住复杂的入口，把它放在收藏夹的某个文件夹里就好。下次想看看体育资讯时，自然就会点开。
+            </p>
+        </div>
+
+        <hr>
+
+        <div class="note-light">
+            <strong style="font-weight:550; color:#5f4127;">✎ 一点观察</strong><br>
+            很多站点试图用通知和推送把你绑住，但这里更倾向于让人自主选择观看的节奏。页面加载速度稳定，没有冗余的干扰模块。如果你喜欢干净、有层次的阅读体验，或许会习惯把它的链接留在书签栏。<br>
+            附注：本站无任何强制注册或付费墙，适合轻松浏览。书签里若还缺一个体育类目，不妨试试。
+        </div>
+
+        <div class="closing-thought">
+            —— 有些地方，不必每日造访，却始终值得被记住。
+        </div>
+    </div>
+</body>
+</html>
