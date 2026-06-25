@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏体育 · 资料索引与专题整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+            background-color: #f5f3f0;
+            color: #2e2c29;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: #1b1a1e;
+            background-image: radial-gradient(ellipse at 20% 30%, #2b2a30 0%, #131214 100%);
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            color: #e6ddd0;
+            border-bottom: 1px solid #3a3833;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.5rem;
+            color: #f2eadc;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.75;
+            max-width: 620px;
+            margin: 0.2rem auto 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 1.5rem;
+            border: 1px solid #6e665b;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #c6bcab;
+            background: rgba(255, 255, 245, 0.05);
+            backdrop-filter: blur(2px);
+        }
+
+        /* 主要内容区 — 浅色 */
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 2.8rem 1.8rem 3.5rem;
+        }
+
+        /* 卡片式段落 */
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 4px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+
+        .card h2 {
+            font-size: 1.6rem;
+            font-weight: 450;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ece5db;
+            color: #2e2a24;
+            letter-spacing: 0.01em;
+        }
+
+        .card h2 i {
+            font-style: normal;
+            margin-right: 10px;
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #b0a184;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-bottom: 0.15em;
+        }
+
+        .card p {
+            margin-bottom: 1.1rem;
+            font-size: 1rem;
+            color: #3b3833;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 强调色用于链接 */
+        a {
+            color: #8f6b4b;
+            text-decoration: underline;
+            text-decoration-thickness: 0.5px;
+            text-underline-offset: 3px;
+            transition: color 0.15s, text-decoration-color 0.15s;
+        }
+
+        a:hover {
+            color: #6b4e34;
+            text-decoration-color: #6b4e34;
+        }
+
+        /* 场景/特点小标签（点缀） */
+        .meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #ddd8d0;
+        }
+
+        .meta-tags span {
+            background: #f1ede7;
+            border-radius: 30px;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            color: #5a5348;
+            letter-spacing: 0.02em;
+        }
+
+        /* FAQ 摘要卡片（简短） */
+        .faq-mini {
+            background: #faf8f5;
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-top: 0.5rem;
+            border-left: 3px solid #b0a184;
+        }
+
+        .faq-mini p {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+        .faq-mini p strong {
+            font-weight: 500;
+            color: #4d4437;
+        }
+
+        /* 页尾访问提示 */
+        .footer-note {
+            text-align: center;
+            padding: 2.5rem 1rem 3rem;
+            color: #5d574e;
+            border-top: 1px solid #ddd6cb;
+            margin-top: 1rem;
+            background: #ece8e1;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .footer-note p {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+        .footer-note .small {
+            font-size: 0.85rem;
+            opacity: 0.65;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero {
+                padding: 3rem 1.2rem 2.5rem;
+            }
+            .container {
+                padding: 1.5rem 1rem 2.5rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .card h2 {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero .sub {
+                font-size: 0.95rem;
+            }
+            .meta-tags span {
+                font-size: 0.7rem;
+                padding: 0.15rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <section class="hero">
+        <h1>爱游戏体育</h1>
+        <div class="sub">资料索引 · 专题整理 · 信息脉络</div>
+        <div class="tagline">杂志专题式 · 温和回访</div>
+    </section>
+
+    <div class="container">
+
+        <!-- 背景说明卡片 -->
+        <div class="card">
+            <h2><i></i>从资料整理说起</h2>
+            <p>体育与游戏的交叉地带，常常涌现出大量零散的信息片段。无论是赛事数据、玩家社区观察，还是产业动态，都需要一个相对清晰的索引框架。也正是出于这种整理习惯，<a href="https://chinese-aigamesports.com">爱游戏体育</a> 逐渐成为一处可以回溯和参照的角落。这里不追求即时爆点，更在意内容的可查阅性与温和的积累。</p>
+            <p>这个专题页尝试以杂志式的手感，将几段背景介绍、场景特征与常见疑问摘要组织在一起，方便新老朋友快速建立方位感。</p>
+        </div>
+
+        <!-- 三段自然介绍：特点 + 场景 + 索引逻辑 -->
+        <div class="card">
+            <h2><i></i>信息特点与筛选倾向</h2>
+            <p>在内容调性上，网站倾向于保留那些有具体来源或可交叉验证的信息，而不是笼统的断言。比如赛事规则变更、俱乐部动态、游戏版本更新对竞技生态的影响，以及社区里沉淀下来的策略讨论——这些都被视为值得记录的切片。</p>
+            <p>另外，时效性并不是唯一尺度。一些几年前的分析或回顾，只要仍能提供背景理解，也会被收录在相应专题下。这种选择让整个资料库带有一种“非快餐”的质感。</p>
+            <div class="meta-tags">
+                <span>赛事档案</span>
+                <span>社区观察</span>
+                <span>规则沿革</span>
+                <span>策略笔记</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i></i>常见的使用场景</h2>
+            <p>据日常访问反馈，许多用户是在准备讨论素材、撰写分析短文，或是单纯想回顾某个事件的时间线时，来到 <a href="https://chinese-aigamesports.com">爱游戏体育</a> 查找资料。也有人把它当作一份“可以安静翻阅的列表”，在空闲时顺着标签浏览，意外发现一些之前忽略的细节。</p>
+            <p>此外，新接触某个体育游戏项目的人，偶尔也会从这里出发，了解项目的发展阶段与关键赛事脉络。虽然网站不提供实时数据流，但作为背景阅读，它有自己稳定的角色。</p>
+        </div>
+
+        <div class="card">
+            <h2><i></i>索引逻辑与延伸提示</h2>
+            <p>网站的底层组织方式偏向主题分类而非单纯按时间排序。每个专题下会附带相关的内部链接和外部参考来源，这样在阅读一篇关于“战术演变”的条目时，也能顺带看到同一主题下的早期讨论与后续更新。</p>
+            <p>如果你习惯于按关键词查找，也可以直接使用站内搜索（部分页面提供），或者通过分类标签浏览。建议从自己最熟悉的项目或赛事入手，慢慢扩展到相邻领域。</p>
+            <!-- 简短FAQ摘要卡片 -->
+            <div class="faq-mini">
+                <p><strong>FAQ 摘要 · 常见疑问</strong></p>
+                <p>▪ 内容更新节奏？—— 不定期，但每次都会补充有依据的条目或修正旧信息。</p>
+                <p>▪ 是否可以转载或引用？—— 建议注明出处，并核对原文时效。</p>
+                <p>▪ 网站是否有社区互动区？—— 目前以资料陈列为主，暂无开放评论区。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <p>回到 <a href="https://chinese-aigamesports.com">爱游戏体育</a> · 资料索引首页</p>
+        <p class="small">基于信息整理与专题脉络 · 温和访问 ｜ 杂志式阅读体验</p>
+    </div>
+
+</body>
+</html>
